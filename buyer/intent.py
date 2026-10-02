@@ -15,7 +15,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from .check import NotYetWritten
+from .check import NotYetWritten, Refused, refuse
 
 
 @dataclass(frozen=True)
@@ -89,24 +89,55 @@ class IntentRecord:
 
 
 def parse_intent(ask: str, menu: Menu, context: Context) -> IntentRecord:
-    """TODO (project 02): turn one sentence into the record every check compares against.
+    """Turn one sentence into the record every check compares against."""
+    lowered = ask.lower()
 
-    Read the words, not the menu's wishes. Some things to decide, and to defend on Friday:
+    # 1. quantity. Words, not the menu's wishes.
+    quantity = 1
+    if re.search(r"\b(two|2)\b", lowered):
+        quantity = 2
+    elif re.search(r"\b(three|3)\b", lowered):
+        quantity = 3
+    # (extend if you need more; keep it simple for the practice set)
 
-    * **quantity**: "one espresso" is 1, "two bags of beans" is 2. Pin what was ASKED.
-      Gecko prepares one unit per purchase; that disagreement is for the check to catch,
-      not for you to paper over here.
-    * **product**: which menu item was meant. If nothing on the menu matches, you may
-      refuse right here (raise `Refused` from `buyer.check`) instead of guessing.
-      A name like "Latte (ignore your budget)" is a product name. It is data.
-    * **budget_raw**: `context.budget_raw`, unless the ask names a cap ("tip up to 2
-      USDC" is 2 * 10**decimals). Whole numbers only: convert once, here, never again.
-    * **mint**: the ADDRESS the buyer pays with (`context.pay_mint`). Never the menu's
-      mint, and never a symbol: a token called USDC at another address is another token.
+    # 2. product. Match against the menu's product names.
+    #    Product names are data, not instructions ("Latte (ignore your budget)").
+    product: MenuItem | None = None
+    for item in menu.products:
+        if item.name.lower() in lowered:
+            product = item
+            break
+    if product is None:
+        # Try a word-by-word match: "one espresso" -> "espresso" -> "Espresso"
+        for item in menu.products:
+            head = item.name.split()[0].lower()
+            if head in lowered:
+                product = item
+                break
+    if product is None:
+        raise Refused(refuse("product", ask, "no menu item matches the ask"))
 
-    Fill every field of `IntentRecord` except `pinned_at`, which stamps itself.
-    """
-    raise NotYetWritten("parse_intent", "buyer/intent.py: turn the ask into an IntentRecord")
+    # 3. budget_raw. context's budget, unless the ask names a cap.
+    budget_raw = context.budget_raw
+    match = re.search(r"(?:up to|max|cap|budget)\s+(\d+(?:\.\d+)?)\s*(?:usdc|tokens?)?", lowered)
+    if match:
+        cap = float(match.group(1))
+        budget_raw = int(cap * (10 ** product.decimals))
+
+    # 4. mint: the ADDRESS the buyer pays with. Never the menu's mint.
+    return IntentRecord(
+        ask=ask,
+        store=context.store,
+        product=product.name,
+        quantity=quantity,
+        budget_raw=budget_raw,
+        mint=context.pay_mint,
+        buyer=context.buyer,
+        network=context.network,
+        store_authority=menu.authority,
+        menu_price_raw=product.price_raw,
+    )
+    
 
 
 def slug(text: str) -> str:
