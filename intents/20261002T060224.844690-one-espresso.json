@@ -1,0 +1,13 @@
+{
+  "ask": "one espresso",
+  "store": "dev3licette32",
+  "product": "Espresso",
+  "quantity": 1,
+  "budget_raw": 2000000,
+  "mint": "6t9U85HRA6esCeobdmKteHNew2DF5wbnDGTtXvMGTa2C",
+  "buyer": "4iL74My212tTQes9HViHHF1RNBJEqxjchHJK42YTvc6H",
+  "network": "devnet",
+  "store_authority": "CDPmkUisEGMF9H6EeZ5EuDcJAMjFhJK8wadGFUygagw3",
+  "menu_price_raw": 1000000,
+  "pinned_at": "2026-10-02T06:02:24.844690+00:00"
+}

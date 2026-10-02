@@ -99,42 +99,48 @@ def check(run: Run) -> None:
 
 
 def sign(run: Run) -> None:
-    """TODO (project 03): have the signer sign the exact prepared bytes, once.
-
-    `run.signer.sign(run.prepared)` returns the signed base64. Leave it on `run.signed`.
-    The signer refuses by itself if the cluster, the budget or the blockhash is wrong.
-    """
-    raise NotYetWritten("sign", "buyer/agent.py: sign the prepared bytes with run.signer")
+    """Have the signer sign the exact prepared bytes, once."""
+    run.signed = run.signer.sign(run.prepared)
 
 
 def verify(run: Run) -> None:
-    """TODO (project 03): ask Gecko whether the signed bytes ARE the bytes it prepared.
-
-    Call `verify_signed_transaction` with the signed transaction, the `binding` and
-    `binding_strength` from the prepared answer, `last_valid_block_height`, and
-    `rpc_url = run.chain.rpc_url`. Leave the answer on `run.verified`.
-    """
-    raise NotYetWritten("verify", "buyer/agent.py: call verify_signed_transaction")
+    """Ask Gecko whether the signed bytes ARE the bytes it prepared."""
+    run.verified = run.gecko.call(
+        "verify_signed_transaction",
+        {
+            "transaction": run.signed,
+            "binding": run.prepared.binding,
+            "binding_strength": run.prepared.binding_strength,
+            "last_valid_block_height": run.prepared.last_valid_block_height,
+            "rpc_url": run.chain.rpc_url,
+        },
+    )
 
 
 def submit(run: Run) -> None:
-    """TODO (project 03): send the verified bytes, through Gecko, to the signer's own RPC.
-
-    Call `submit_transaction` with the signed transaction, the `binding`,
-    `last_valid_block_height` and `rpc_url = run.chain.rpc_url`. Leave the answer on
-    `run.submitted`. Never call it twice for the same bytes: if it did not confirm, read
-    what it said first.
-    """
-    raise NotYetWritten("submit", "buyer/agent.py: call submit_transaction")
+    """Send the verified bytes, through Gecko, to the signer's own RPC."""
+    run.submitted = run.gecko.call(
+        "submit_transaction",
+        {
+            "transaction": run.signed,
+            "binding": run.prepared.binding,
+            "last_valid_block_height": run.prepared.last_valid_block_height,
+            "rpc_url": run.chain.rpc_url,
+        },
+    )
 
 
 def write_the_receipt(run: Run) -> None:
-    """TODO (project 03): read the ledger again and reconcile it with the first read.
-
-    `read_snapshot(...)` for the after-read, then `reconcile(...)` with `run.before`, and
-    leave the `Receipt` on `run.receipt`. The runner writes it to `receipts/`.
-    """
-    raise NotYetWritten("write_the_receipt", "buyer/agent.py: read the ledger and reconcile")
+    """Read the ledger again and reconcile it with the first read."""
+    after = read_snapshot(run.chain, run.intent, run.prepared)
+    run.receipt = reconcile(
+        run.intent,
+        run.prepared,
+        run.before,
+        after,
+        run.submitted,
+        run.source,
+    )
 
 
 # ==========================================================================================
