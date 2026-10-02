@@ -5,6 +5,15 @@
 ![Solana](https://img.shields.io/badge/Solana-devnet-9945FF)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
+My store `dev3licette32` on Solana devnet buys one espresso through Gecko and proves it landed: [explorer link for CGUMZeUE](https://explorer.solana.com/tx/CGUMZeUEjtTp7jYo1VSwrCy9ZKewXWasNJxFQB99P5jdCxywnFtoSEbWn9649hDcvcDqiD98tGFnPPp69E1agbP?cluster=devnet).
+
+## My defence in 30 seconds
+
+* Store: `dev3licette32`, address `GRGzeJdy4pcT5PdpZqSGNtM9GmbP2Jg7x2PbLDTrPp7y` (`store/store.json`).
+* It landed: `receipts/CGUMZeUE.md` — one espresso, `price_raw 1000000` of my mint `6t9U85HRA6esCeobdmKteHNew2DF5wbnDGTtXvMGTa2C`, buyer `-1000000`, store `+1000000`, `total_purchases 0 to 1`, reconciled from the ledger (slot 506542302).
+* Class store also landed: `receipts/1sbqz1bq.md` — one espresso at `dev3pack-cafe`, `price_raw 1000000` of `Eoqdd43nFQ9HzGq8HjBRVLCV6aTqCFRiwHy1ZVQheYSi`, buyer `-1000000`, store `+1000000`, `total_purchases 7 to 8` ([explorer](https://explorer.solana.com/tx/1sbqz1bqcATGK4SnP9ghz9iRmvzcF7SZTYvCeo1uaMFPdkmpMXKgW8KzYuiEtBCQnXJ5b3AD5hRm9B1FwV5Ho8u?cluster=devnet)).
+* It refused: `module 3, paid in USDC` refused on `mint` — asked `Eoqdd43nFQ9HzGq8HjBRVLCV6aTqCFRiwHy1ZVQheYSi`, prepared `BRPT4Sr7CWcJhfdwMJektzvLFKjgzVBK2AfrW4nPCEM6`, nothing signed (`refusals/20261002T140241.328306-mint.json`, devnet).
+
 **Open your own store on Solana devnet and build a buyer agent that buys from it through
 Gecko: it pins what was asked before any bytes exist, refuses by field when the prepared
 purchase disagrees, signs only after a passing simulation, and writes one receipt, read

@@ -1,0 +1,13 @@
+{
+  "ask": "one latte",
+  "step": "check",
+  "field": "price_raw",
+  "asked": 2000000,
+  "found": 5000000,
+  "where": "prepared",
+  "note": "",
+  "signed": false,
+  "intent": "intents\\20261002T140443.111754-one-latte.json",
+  "source": "devnet",
+  "at": "2026-10-02T14:04:44.151613+00:00"
+}

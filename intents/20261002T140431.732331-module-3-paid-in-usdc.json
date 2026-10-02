@@ -1,0 +1,13 @@
+{
+  "ask": "module 3, paid in USDC",
+  "store": "dev3pack-cafe",
+  "product": "Module 3",
+  "quantity": 3,
+  "budget_raw": 2000000,
+  "mint": "Eoqdd43nFQ9HzGq8HjBRVLCV6aTqCFRiwHy1ZVQheYSi",
+  "buyer": "4iL74My212tTQes9HViHHF1RNBJEqxjchHJK42YTvc6H",
+  "network": "devnet",
+  "store_authority": "Dt8quRFWgTMrrDgVa4GGFRJWksncskbs1tpYAQHkEPwJ",
+  "menu_price_raw": 1500000,
+  "pinned_at": "2026-10-02T14:04:31.732331+00:00"
+}
