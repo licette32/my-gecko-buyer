@@ -35,6 +35,7 @@ Same code path, replayed answers.
 - [x] `uv run buyer --cases --devnet --json smoke-report.json` → 6/6
 - [x] `python3 scripts/scan_secrets.py` → nothing found
 - [x] Gecko connector live; `list_stores` tried today
+- [x] Mainnet (finalist): `receipts/2iU16eZn.md` committed; `show` 300000 → 200000 raw USDC
 
 ## The seven questions
 

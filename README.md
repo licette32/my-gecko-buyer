@@ -13,6 +13,7 @@ My store `dev3licette32` on Solana devnet buys one espresso through Gecko and pr
 * It landed: `receipts/CGUMZeUE.md` — one espresso, `price_raw 1000000` of my mint `6t9U85HRA6esCeobdmKteHNew2DF5wbnDGTtXvMGTa2C`, buyer `-1000000`, store `+1000000`, `total_purchases 0 to 1`, reconciled from the ledger (slot 506542302).
 * Class store also landed: `receipts/1sbqz1bq.md` — one espresso at `dev3pack-cafe`, `price_raw 1000000` of `Eoqdd43nFQ9HzGq8HjBRVLCV6aTqCFRiwHy1ZVQheYSi`, buyer `-1000000`, store `+1000000`, `total_purchases 7 to 8` ([explorer](https://explorer.solana.com/tx/1sbqz1bqcATGK4SnP9ghz9iRmvzcF7SZTYvCeo1uaMFPdkmpMXKgW8KzYuiEtBCQnXJ5b3AD5hRm9B1FwV5Ho8u?cluster=devnet)).
 * It refused: `module 3, paid in USDC` refused on `mint` — asked `Eoqdd43nFQ9HzGq8HjBRVLCV6aTqCFRiwHy1ZVQheYSi`, prepared `BRPT4Sr7CWcJhfdwMJektzvLFKjgzVBK2AfrW4nPCEM6`, nothing signed (`refusals/20261002T140241.328306-mint.json`, devnet).
+* Friday mainnet (finalist): `receipts/2iU16eZn.md` — one espresso at `geckocoffee`, `price_raw 100000`, buyer `-100000`, store `+100000`, `total_purchases 61 to 62`; `show` went `300000 → 200000` raw USDC ([explorer](https://explorer.solana.com/tx/2iU16eZns6CGbgLQ6dKtibGjSqbxK6ePJSnPLgMqFeqbqSw6mQix2SbnDDuaV16rfAhPJXfrhkcX78A4gtNMArEo)).
 
 **Open your own store on Solana devnet and build a buyer agent that buys from it through
 Gecko: it pins what was asked before any bytes exist, refuses by field when the prepared

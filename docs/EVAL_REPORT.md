@@ -37,6 +37,15 @@ Result: landed
 - Signature `CGUMZeUEjtTp7jYo1VSwrCy9ZKewXWasNJxFQB99P5jdCxywnFtoSEbWn9649hDcvcDqiD98tGFnPPp69E1agbP`
 - Receipt `receipts/CGUMZeUE.json` reconciled: buyer -1000000, store +1000000, total_purchases 0→1, findings []
 
+## Friday mainnet buy (finalist, `geckocoffee`)
+
+Command: `uv run buyer "one espresso" --mainnet --store geckocoffee`
+Result: landed
+- Signature `2iU16eZns6CGbgLQ6dKtibGjSqbxK6ePJSnPLgMqFeqbqSw6mQix2SbnDDuaV16rfAhPJXfrhkcX78A4gtNMArEo`
+- Receipt `receipts/2iU16eZn.json` reconciled: buyer -100000, store +100000, total_purchases 61→62, findings []
+- Price 100000 of mint `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`, under the 300000 cap
+- `mainnet_wallet.py show` before: 300000 raw USDC, after: 200000 raw USDC (down exactly the price); SOL 9400000 → 9395000 lamports
+
 ## Tests
 
 - `uv run pytest tests/test_your_work.py` — 21 passed, 3 xfailed
@@ -55,8 +64,8 @@ Result: landed
 
 ## What this does not prove
 
-- **Devnet only.** Nothing here proves mainnet behavior: different cluster,
-  different amounts, different signer.
+- **Devnet section proves devnet.** The mainnet buy above is one purchase at `geckocoffee`;
+  it proves that lane only, not every mainnet condition.
 - **One unit per purchase.** The flow moves one product per receipt.
 - **The check compares against my own pin.** If the parse is wrong, the buyer
   signs it faithfully. The seven checks validate consistency between the pin
