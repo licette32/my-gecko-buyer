@@ -1,0 +1,20 @@
+{
+  "ask": "one espresso",
+  "network": "mainnet",
+  "store": "geckocoffee",
+  "product": "Espresso",
+  "signature": "2iU16eZns6CGbgLQ6dKtibGjSqbxK6ePJSnPLgMqFeqbqSw6mQix2SbnDDuaV16rfAhPJXfrhkcX78A4gtNMArEo",
+  "explorer": "https://explorer.solana.com/tx/2iU16eZns6CGbgLQ6dKtibGjSqbxK6ePJSnPLgMqFeqbqSw6mQix2SbnDDuaV16rfAhPJXfrhkcX78A4gtNMArEo",
+  "slot": 452639246,
+  "price_raw": 100000,
+  "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "buyer": "2EpTWNxYx5QTUySnJWa7QsmdWDG3BMQXnPG2tZQqA6fk",
+  "buyer_delta_raw": -100000,
+  "store_delta_raw": 100000,
+  "total_purchases_before": 61,
+  "total_purchases_after": 62,
+  "intent_pinned_at": "2026-10-02T14:37:19.445094+00:00",
+  "source": "mainnet",
+  "reconciled": true,
+  "findings": []
+}

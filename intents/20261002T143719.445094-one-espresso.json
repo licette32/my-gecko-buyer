@@ -1,0 +1,13 @@
+{
+  "ask": "one espresso",
+  "store": "geckocoffee",
+  "product": "Espresso",
+  "quantity": 1,
+  "budget_raw": 2000000,
+  "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "buyer": "2EpTWNxYx5QTUySnJWa7QsmdWDG3BMQXnPG2tZQqA6fk",
+  "network": "mainnet",
+  "store_authority": "DMjTEZJuV3mpfzBNeeuFy9m47A1bj5CXVhCNVo7BEPzy",
+  "menu_price_raw": 100000,
+  "pinned_at": "2026-10-02T14:37:19.445094+00:00"
+}
